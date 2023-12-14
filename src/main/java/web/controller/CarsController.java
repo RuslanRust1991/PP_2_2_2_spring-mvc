@@ -9,9 +9,10 @@ import web.service.CarService;
 
 @Controller
 public class CarsController {
-    CarService carService;
+    private final CarService carService;
 
     public CarsController(CarService carService) {
+
         this.carService = carService;
     }
 

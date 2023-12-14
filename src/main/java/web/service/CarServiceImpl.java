@@ -16,15 +16,8 @@ public class CarServiceImpl implements CarService {
             new Car(55, "model5", "Owner5"));
 
     @Override
-    public List<Car> getCars(int count) {
-        if (count >= 1 && count <5) {
-            ArrayList<Car> newList = new ArrayList<>();
-            for (int i = 0; i < count; i ++) {
-                newList.add(carList.get(i));
-            }
-            return newList;
-        } else {
-            return carList;
-        }
+    public List<Car> getCars(Integer count) {
+        count = (count == null || count > 5) ? 5 : count < 0 ? 0 : count;
+        return carList.stream().limit(count).toList();
     }
 }
